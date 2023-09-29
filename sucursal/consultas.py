@@ -10,6 +10,7 @@ def obtener_sucursal_id_db(id: str) -> SucursalOut:
     sucursal = db.session.query(Sucursal).where(Sucursal.id == id).first()
 
     if not sucursal:
+        print("Sucursal no encontrada")
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND, detail="Sucursal no encontrada"
         )
@@ -30,6 +31,7 @@ def crear_sucursal_db(nueva_sucursal: SucursalIn) -> SucursalOut:
         db.session.commit()
         return parsear_sucursal(sucursal)
     except:
+        print("No se ha creado la sucursal")
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail="No se ha creado el sucursal",

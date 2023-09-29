@@ -8,6 +8,7 @@ def obtener_medicamento_id_db(id: str) -> MedicamentoOut:
     medicamento = db.session.query(Medicamento).where(Medicamento.id == id).first()
 
     if not medicamento:
+        print("Medicamento no encontrado")
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND, detail="Medicamento no econtrado"
         )
@@ -21,6 +22,7 @@ def obtener_medicamento_isbn_db(isbn: str) -> MedicamentoOut:
     )
 
     if not medicamento:
+        print("Medicamento no encontrado")
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND, detail="Medicamento no econtrado"
         )
@@ -29,11 +31,14 @@ def obtener_medicamento_isbn_db(isbn: str) -> MedicamentoOut:
 
 
 def obtener_medicamento_nombre_db(nombre: str) -> MedicamentoOut:
+
+    print("###########", nombre)
     medicamento = (
         db.session.query(Medicamento).where(Medicamento.nombre == nombre).first()
     )
 
     if not medicamento:
+        print("Medicamento no encontrado")
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND, detail="Medicamento no econtrado"
         )

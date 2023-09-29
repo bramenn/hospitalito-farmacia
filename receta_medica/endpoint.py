@@ -37,6 +37,7 @@ async def crear_receta_medica(request: Request):
         except Exception as e:
             print("Receta no cumple con el formato esperado:", e)
             return
+    
 
     return crear_receta_medica_db(nuevo_receta_medica)
 
