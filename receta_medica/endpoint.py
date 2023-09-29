@@ -42,6 +42,7 @@ async def crear_receta_medica(request: Request):
 
 @router.put("/{cc}", response_model=RecetaMedicaOut)
 def entregar_receta_medica(cc: str):
+    
     receta_medica = entregar_receta_medica_cc_db(cc)
 
     try:

@@ -13,6 +13,8 @@ class RecetaMedica(db.Base):
     id = Column("id", Integer, autoincrement=True, primary_key=True, unique=True)
     cedula_paciente = Column("cedula_paciente", String(255))
     nombre_paciente = Column("nombre_paciente", String(255))
+    email_paciente = Column("email_paciente", String(255))
+    telefono_paciente = Column("telefono_paciente", String(255), nullable=True)
     cedula_medico = Column("cedula_medico", String(255))
     nombre_medico = Column("nombre_medico", String(255))
     hospital = Column("hospital", String(255))
@@ -28,6 +30,8 @@ class RecetaMedica(db.Base):
 class RecetaMedicaIn(BaseModel):
     cedula_paciente: str
     nombre_paciente: str
+    email_paciente: str
+    telefono_paciente: str
     cedula_medico: str
     nombre_medico: str
     hospital: str
@@ -36,11 +40,12 @@ class RecetaMedicaIn(BaseModel):
     medicamento: str
     id_sucursal: int
 
-
 class RecetaMedicaOut(BaseModel):
-    id: int
+    id_registro_medico: int
     cedula_paciente: str
     nombre_paciente: str
+    email_paciente: str
+    telefono_paciente: str
     cedula_medico: str
     nombre_medico: str
     hospital: str

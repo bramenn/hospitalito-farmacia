@@ -18,7 +18,7 @@ sns_client = boto3.client(
 
 
 def enviar_evento_generar_pdf(data: Dict):
-    sns_client.publish(
+    response = sns_client.publish(
         TopicArn=AWS_SNS_GERAR_PDF,
         Message=json.dumps(data),
     )
