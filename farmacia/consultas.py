@@ -18,7 +18,6 @@ def obtener_farmacia_id_db(id: str) -> FarmaciaOut:
 
 
 def crear_farmacia_db(nueva_farmacia: FarmaciaIn) -> FarmaciaOut:
-
     farmacia = Farmacia(nombre=nueva_farmacia.nombre)
 
     try:
@@ -26,7 +25,6 @@ def crear_farmacia_db(nueva_farmacia: FarmaciaIn) -> FarmaciaOut:
         db.session.commit()
         return parsear_farmacia(farmacia)
     except:
-
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail="No se ha creado la farmacia",

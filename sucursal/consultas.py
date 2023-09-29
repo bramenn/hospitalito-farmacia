@@ -18,7 +18,6 @@ def obtener_sucursal_id_db(id: str) -> SucursalOut:
 
 
 def crear_sucursal_db(nueva_sucursal: SucursalIn) -> SucursalOut:
-
     sucursal = Sucursal(
         nombre=nueva_sucursal.nombre,
         ubicacion=nueva_sucursal.ubicacion,

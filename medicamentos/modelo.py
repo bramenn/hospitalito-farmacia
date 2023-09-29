@@ -5,7 +5,6 @@ from pydantic import BaseModel
 
 
 class Medicamento(db.Base):
-
     __tablename__ = "medicamento"
     id = Column("id", Integer, autoincrement=True, primary_key=True, unique=True)
     nombre = Column("nombre", String(255))

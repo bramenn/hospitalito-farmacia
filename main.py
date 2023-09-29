@@ -22,7 +22,6 @@ app.include_router(
 )
 
 if __name__ == "__main__":
-
     Base.metadata.create_all(conn)
 
     uvicorn.run(app="main:app", reload=True, port=8001)

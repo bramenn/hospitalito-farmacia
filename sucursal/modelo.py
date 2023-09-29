@@ -9,7 +9,6 @@ from medicamentos.modelo import Medicamento
 
 
 class Sucursal(db.Base):
-
     __tablename__ = "sucursal"
     id = Column("id", Integer, autoincrement=True, primary_key=True, unique=True)
     nombre = Column("nombre", String(255))

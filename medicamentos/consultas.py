@@ -42,7 +42,6 @@ def obtener_medicamento_nombre_db(nombre: str) -> MedicamentoOut:
 
 
 def crear_medicamento_db(nuevo_medicamento: MedicamentoIn) -> MedicamentoOut:
-
     medicamento = Medicamento(
         nombre=nuevo_medicamento.nombre,
         codigo_isbn=nuevo_medicamento.codigo_isbn,
