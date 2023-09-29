@@ -31,8 +31,6 @@ def obtener_medicamento_isbn_db(isbn: str) -> MedicamentoOut:
 
 
 def obtener_medicamento_nombre_db(nombre: str) -> MedicamentoOut:
-
-    print("###########", nombre)
     medicamento = (
         db.session.query(Medicamento).where(Medicamento.nombre == nombre).first()
     )

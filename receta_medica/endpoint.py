@@ -30,14 +30,12 @@ async def crear_receta_medica(request: Request):
         )
         return
     elif sns_request.get("Type") == "Notification":
-        print("Ha llego una nueva receta medica")
         try:
             nuevo_receta_medica: dict = json.loads(sns_request.get("Message"))
             nuevo_receta_medica = RecetaMedicaIn(**nuevo_receta_medica)
         except Exception as e:
             print("Receta no cumple con el formato esperado:", e)
             return
-    
 
     return crear_receta_medica_db(nuevo_receta_medica)
 
