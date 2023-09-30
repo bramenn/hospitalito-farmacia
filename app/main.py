@@ -1,12 +1,11 @@
-from fastapi import FastAPI
 import uvicorn
-
-from .receta_medica import endpoint as receta_medica_endpoint
-from .sucursal import endpoint as sucursal_endpoint
-from .farmacia import endpoint as farmacia_endpoint
-from .medicamentos import endpoint as medicamentos_endpoint
+from fastapi import FastAPI
 
 from .db import Base, conn
+from .farmacia import endpoint as farmacia_endpoint
+from .medicamentos import endpoint as medicamentos_endpoint
+from .receta_medica import endpoint as receta_medica_endpoint
+from .sucursal import endpoint as sucursal_endpoint
 
 app = FastAPI()
 
@@ -17,9 +16,7 @@ app.include_router(
 app.include_router(sucursal_endpoint.router, prefix="/v1/sucursal", tags=["sucursal"])
 app.include_router(farmacia_endpoint.router, prefix="/v1/farmacia", tags=["farmacia"])
 
-app.include_router(
-    medicamentos_endpoint.router, prefix="/v1/medicamento", tags=["medicamento"]
-)
+app.include_router(medicamentos_endpoint.router, prefix="/v1/medicamento", tags=["medicamento"])
 
 if __name__ == "__main__":
     Base.metadata.create_all(conn)

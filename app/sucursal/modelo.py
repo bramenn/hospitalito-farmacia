@@ -1,9 +1,9 @@
-from sqlalchemy import Column, Integer, String
-from .. import db
-from sqlalchemy.sql.schema import ForeignKey
 from pydantic import BaseModel
+from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
+from sqlalchemy.sql.schema import ForeignKey
 
+from .. import db
 from ..farmacia.modelo import Farmacia
 from ..medicamentos.modelo import Medicamento
 

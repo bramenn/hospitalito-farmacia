@@ -1,7 +1,8 @@
-from .. import db
 from fastapi import status
 from fastapi.exceptions import HTTPException
-from .modelo import Medicamento, MedicamentoOut, MedicamentoIn
+
+from .. import db
+from .modelo import Medicamento, MedicamentoIn, MedicamentoOut
 
 
 def obtener_medicamento_id_db(id: str) -> MedicamentoOut:
@@ -17,9 +18,7 @@ def obtener_medicamento_id_db(id: str) -> MedicamentoOut:
 
 
 def obtener_medicamento_isbn_db(isbn: str) -> MedicamentoOut:
-    medicamento = (
-        db.session.query(Medicamento).where(Medicamento.codigo_isbn == isbn).first()
-    )
+    medicamento = db.session.query(Medicamento).where(Medicamento.codigo_isbn == isbn).first()
 
     if not medicamento:
         print("Medicamento no encontrado")
@@ -31,9 +30,7 @@ def obtener_medicamento_isbn_db(isbn: str) -> MedicamentoOut:
 
 
 def obtener_medicamento_nombre_db(nombre: str) -> MedicamentoOut:
-    medicamento = (
-        db.session.query(Medicamento).where(Medicamento.nombre == nombre).first()
-    )
+    medicamento = db.session.query(Medicamento).where(Medicamento.nombre == nombre).first()
 
     if not medicamento:
         print("Medicamento no encontrado")
@@ -63,9 +60,7 @@ def crear_medicamento_db(nuevo_medicamento: MedicamentoIn) -> MedicamentoOut:
         )
 
 
-def actualizar_dosis_medicamento_id_db(
-    id: str, dosis_entregadas: int
-) -> MedicamentoOut:
+def actualizar_dosis_medicamento_id_db(id: str, dosis_entregadas: int) -> MedicamentoOut:
     medicamento = db.session.query(Medicamento).where(Medicamento.id == id).first()
     medicamento.dosis_disponibles -= dosis_entregadas
 

@@ -1,16 +1,16 @@
-from .modelo import RecetaMedica, RecetaMedicaIn, RecetaMedicaOut
 from fastapi import status
 from fastapi.exceptions import HTTPException
-from .. import db
 
-from ..medicamentos.modelo import MedicamentoOut
+from .. import db
 from ..medicamentos.consultas import (
-    obtener_medicamento_nombre_db,
-    obtener_medicamento_id_db,
     actualizar_dosis_medicamento_id_db,
+    obtener_medicamento_id_db,
+    obtener_medicamento_nombre_db,
 )
-from ..sucursal.modelo import SucursalOut
+from ..medicamentos.modelo import MedicamentoOut
 from ..sucursal.consultas import obtener_sucursal_id_db
+from ..sucursal.modelo import SucursalOut
+from .modelo import RecetaMedica, RecetaMedicaIn, RecetaMedicaOut
 
 
 def obtener_receta_medica_id_db(id: str) -> RecetaMedicaOut:
@@ -48,9 +48,7 @@ def crear_receta_medica_db(nuevo_receta_medica: RecetaMedicaIn) -> RecetaMedicaO
     try:
         db.session.add(receta_medica)
         db.session.commit()
-        return parsear_receta_medica(
-            receta_medica, medicamento=medicamento, sucursal=sucursal
-        )
+        return parsear_receta_medica(receta_medica, medicamento=medicamento, sucursal=sucursal)
     except Exception as e:
         print(e)
         raise HTTPException(
@@ -72,9 +70,7 @@ def entregar_receta_medica_cc_db(cc: str) -> RecetaMedicaOut:
             status_code=status.HTTP_404_NOT_FOUND, detail="Receta medica no encontrado"
         )
 
-    actualizar_dosis_medicamento_id_db(
-        receta_medica.id_medicamento, int(receta_medica.dosis)
-    )
+    actualizar_dosis_medicamento_id_db(receta_medica.id_medicamento, int(receta_medica.dosis))
 
     receta_medica.entregado = True
 
@@ -85,7 +81,6 @@ def entregar_receta_medica_cc_db(cc: str) -> RecetaMedicaOut:
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail="No se ha actualizado la entrega de la receta medica",
         )
-
 
     return obtener_receta_medica_id_db(receta_medica.id)
 

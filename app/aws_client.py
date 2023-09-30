@@ -1,13 +1,9 @@
 import json
 from typing import Dict
+
 import boto3
 
-from .config import (
-    AWS_ACCESS_KEY_ID,
-    AWS_REGION,
-    AWS_SECRET_ACCESS_KEY,
-    AWS_SNS_GERAR_PDF,
-)
+from .config import AWS_ACCESS_KEY_ID, AWS_REGION, AWS_SECRET_ACCESS_KEY, AWS_SNS_GERAR_PDF
 
 sns_client = boto3.client(
     "sns",

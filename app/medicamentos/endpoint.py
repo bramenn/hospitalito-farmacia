@@ -1,6 +1,6 @@
 from fastapi import APIRouter
-from .consultas import crear_medicamento_db, obtener_medicamento_nombre_db
 
+from .consultas import crear_medicamento_db, obtener_medicamento_nombre_db
 from .modelo import MedicamentoIn, MedicamentoOut
 
 router = APIRouter()

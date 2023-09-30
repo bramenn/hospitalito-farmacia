@@ -1,13 +1,13 @@
 import json
+
 from fastapi import APIRouter, Request
-from .consultas import (
-    crear_receta_medica_db,
-    obtener_receta_medica_id_db,
-    entregar_receta_medica_cc_db,
-)
 
 from ..aws_client import enviar_evento_generar_pdf
-
+from .consultas import (
+    crear_receta_medica_db,
+    entregar_receta_medica_cc_db,
+    obtener_receta_medica_id_db,
+)
 from .modelo import RecetaMedicaIn, RecetaMedicaOut
 
 router = APIRouter()
@@ -42,7 +42,7 @@ async def crear_receta_medica(request: Request):
 
 @router.put("/{cc}", response_model=RecetaMedicaOut)
 def entregar_receta_medica(cc: str):
-    
+
     receta_medica = entregar_receta_medica_cc_db(cc)
 
     try:

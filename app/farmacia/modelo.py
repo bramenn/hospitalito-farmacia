@@ -1,6 +1,7 @@
-from sqlalchemy import Column, Integer, String
-from .. import db
 from pydantic import BaseModel
+from sqlalchemy import Column, Integer, String
+
+from .. import db
 
 
 class Farmacia(db.Base):

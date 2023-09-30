@@ -1,9 +1,9 @@
-from .modelo import Sucursal, SucursalIn, SucursalOut
 from fastapi import status
 from fastapi.exceptions import HTTPException
-from .. import db
 
-from ..sucursal.modelo import SucursalOut, Sucursal
+from .. import db
+from ..sucursal.modelo import Sucursal, SucursalOut
+from .modelo import Sucursal, SucursalIn, SucursalOut
 
 
 def obtener_sucursal_id_db(id: str) -> SucursalOut:
@@ -11,9 +11,7 @@ def obtener_sucursal_id_db(id: str) -> SucursalOut:
 
     if not sucursal:
         print("Sucursal no encontrada")
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND, detail="Sucursal no encontrada"
-        )
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Sucursal no encontrada")
 
     return parsear_sucursal(sucursal)
 

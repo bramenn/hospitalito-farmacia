@@ -1,6 +1,6 @@
 from fastapi import APIRouter
-from .consultas import crear_sucursal_db, obtener_sucursal_id_db
 
+from .consultas import crear_sucursal_db, obtener_sucursal_id_db
 from .modelo import SucursalIn, SucursalOut
 
 router = APIRouter()

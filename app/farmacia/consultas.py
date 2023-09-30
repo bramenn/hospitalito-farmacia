@@ -1,18 +1,16 @@
-from .modelo import Farmacia, FarmaciaIn, FarmaciaOut
 from fastapi import status
 from fastapi.exceptions import HTTPException
-from .. import db
 
-from ..farmacia.modelo import FarmaciaOut, Farmacia
+from .. import db
+from ..farmacia.modelo import Farmacia, FarmaciaOut
+from .modelo import Farmacia, FarmaciaIn, FarmaciaOut
 
 
 def obtener_farmacia_id_db(id: str) -> FarmaciaOut:
     farmacia = db.session.query(Farmacia).where(Farmacia.id == id).first()
 
     if not farmacia:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND, detail="Farmacia no encontrada"
-        )
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Farmacia no encontrada")
 
     return parsear_farmacia(farmacia)
 
