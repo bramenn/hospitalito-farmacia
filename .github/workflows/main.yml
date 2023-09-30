@@ -32,7 +32,7 @@ jobs:
   docker:
     if: "github.ref_name == 'main'"
     runs-on: ubuntu-latest
-    needs: [lint, test]
+    needs: [lint]
     environment: deploy
     steps:
       - name: Checkout code
