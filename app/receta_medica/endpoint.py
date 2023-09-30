@@ -6,7 +6,7 @@ from .consultas import (
     entregar_receta_medica_cc_db,
 )
 
-from aws_client import enviar_evento_generar_pdf
+from ..aws_client import enviar_evento_generar_pdf
 
 from .modelo import RecetaMedicaIn, RecetaMedicaOut
 

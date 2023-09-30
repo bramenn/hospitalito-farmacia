@@ -1,12 +1,12 @@
 from fastapi import FastAPI
 import uvicorn
 
-from receta_medica import endpoint as receta_medica_endpoint
-from sucursal import endpoint as sucursal_endpoint
-from farmacia import endpoint as farmacia_endpoint
-from medicamentos import endpoint as medicamentos_endpoint
+from .receta_medica import endpoint as receta_medica_endpoint
+from .sucursal import endpoint as sucursal_endpoint
+from .farmacia import endpoint as farmacia_endpoint
+from .medicamentos import endpoint as medicamentos_endpoint
 
-from db import Base, conn
+from .db import Base, conn
 
 app = FastAPI()
 

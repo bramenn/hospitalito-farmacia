@@ -1,16 +1,16 @@
 from .modelo import RecetaMedica, RecetaMedicaIn, RecetaMedicaOut
 from fastapi import status
 from fastapi.exceptions import HTTPException
-import db
+from .. import db
 
-from medicamentos.modelo import MedicamentoOut
-from medicamentos.consultas import (
+from ..medicamentos.modelo import MedicamentoOut
+from ..medicamentos.consultas import (
     obtener_medicamento_nombre_db,
     obtener_medicamento_id_db,
     actualizar_dosis_medicamento_id_db,
 )
-from sucursal.modelo import SucursalOut
-from sucursal.consultas import obtener_sucursal_id_db
+from ..sucursal.modelo import SucursalOut
+from ..sucursal.consultas import obtener_sucursal_id_db
 
 
 def obtener_receta_medica_id_db(id: str) -> RecetaMedicaOut:

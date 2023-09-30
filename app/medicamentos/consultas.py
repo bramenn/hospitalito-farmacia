@@ -1,4 +1,4 @@
-import db
+from .. import db
 from fastapi import status
 from fastapi.exceptions import HTTPException
 from .modelo import Medicamento, MedicamentoOut, MedicamentoIn

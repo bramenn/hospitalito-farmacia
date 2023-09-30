@@ -1,9 +1,9 @@
 from .modelo import Farmacia, FarmaciaIn, FarmaciaOut
 from fastapi import status
 from fastapi.exceptions import HTTPException
-import db
+from .. import db
 
-from farmacia.modelo import FarmaciaOut, Farmacia
+from ..farmacia.modelo import FarmaciaOut, Farmacia
 
 
 def obtener_farmacia_id_db(id: str) -> FarmaciaOut:

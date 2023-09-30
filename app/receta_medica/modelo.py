@@ -1,11 +1,11 @@
 from sqlalchemy import Column, Integer, String, DateTime, Boolean
 import datetime
-import db
+from .. import db
 from pydantic import BaseModel
 from sqlalchemy.sql.schema import ForeignKey
 
-from sucursal.modelo import SucursalOut
-from medicamentos.modelo import MedicamentoOut, Medicamento
+from ..sucursal.modelo import SucursalOut
+from ..medicamentos.modelo import MedicamentoOut, Medicamento
 
 
 class RecetaMedica(db.Base):

@@ -1,9 +1,9 @@
 from .modelo import Sucursal, SucursalIn, SucursalOut
 from fastapi import status
 from fastapi.exceptions import HTTPException
-import db
+from .. import db
 
-from sucursal.modelo import SucursalOut, Sucursal
+from ..sucursal.modelo import SucursalOut, Sucursal
 
 
 def obtener_sucursal_id_db(id: str) -> SucursalOut:

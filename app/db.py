@@ -2,7 +2,9 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
-conn = create_engine("postgresql://hospitalitouser:hospitalito123@localhost/farmacias")
+from .config import POSTGRES_URI
+
+conn = create_engine(POSTGRES_URI)
 
 Session = sessionmaker(bind=conn)
 

@@ -1,11 +1,11 @@
 from sqlalchemy import Column, Integer, String
-import db
+from .. import db
 from sqlalchemy.sql.schema import ForeignKey
 from pydantic import BaseModel
 from sqlalchemy.orm import relationship
 
-from farmacia.modelo import Farmacia
-from medicamentos.modelo import Medicamento
+from ..farmacia.modelo import Farmacia
+from ..medicamentos.modelo import Medicamento
 
 
 class Sucursal(db.Base):
